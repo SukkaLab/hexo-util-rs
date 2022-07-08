@@ -1,5 +1,5 @@
 {
-  "name": "@napi-rs/hexo-util-freebsd-x64",
+  "name": "@sukka/hexo-util-rs-freebsd-x64",
   "version": "0.0.1",
   "os": [
     "freebsd"

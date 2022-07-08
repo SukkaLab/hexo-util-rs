@@ -1,5 +1,5 @@
 {
-  "name": "@napi-rs/hexo-util-linux-arm64-gnu",
+  "name": "@sukka/hexo-util-rs-linux-arm64-gnu",
   "version": "0.0.1",
   "os": [
     "linux"

@@ -1,5 +1,5 @@
 {
-  "name": "@napi-rs/hexo-util-darwin-x64",
+  "name": "@sukka/hexo-util-rs-darwin-x64",
   "version": "0.0.1",
   "os": [
     "darwin"
