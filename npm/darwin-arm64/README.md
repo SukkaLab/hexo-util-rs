@@ -1,3 +1,3 @@
-# `@napi-rs/hexo-util-darwin-arm64`
+# `@sukka/hexo-util-rs-darwin-arm64`
 
-This is the **aarch64-apple-darwin** binary for `@napi-rs/hexo-util`
+This is the **aarch64-apple-darwin** binary for `@sukka/hexo-util-rs`

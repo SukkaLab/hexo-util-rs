@@ -1,4 +1,4 @@
-# `@napi-rs/hexo-util`
+# `@sukka/hexo-util-rs`
 
 ![https://github.com/liby/hexo-util-rs/actions](https://github.com/liby/hexo-util-rs/workflows/CI/badge.svg)
 
