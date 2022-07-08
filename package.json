@@ -1,9 +1,6 @@
 {
-  "name": "@napi-rs/hexo-util",
-  "version": "1.0.0",
-  "description": "Utilities for Hexo using rust rewrite.",
   "name": "@sukka/hexo-util-rs",
-  "version": "0.0.1",
+  "version": "0.10.0",
   "description": "Template project for writing node package with napi-rs",
   "main": "index.js",
   "repository": "https://github.com/liby/hexo-util-rs.git",

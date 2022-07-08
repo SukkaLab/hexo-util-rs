@@ -1,3 +1,3 @@
-# `@napi-rs/hexo-util-linux-arm-gnueabihf`
+# `@sukka/hexo-util-rs-linux-arm-gnueabihf`
 
-This is the **armv7-unknown-linux-gnueabihf** binary for `@napi-rs/hexo-util`
+This is the **armv7-unknown-linux-gnueabihf** binary for `@sukka/hexo-util-rs`
