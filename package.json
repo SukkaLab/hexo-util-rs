@@ -1,6 +1,7 @@
 {
   "name": "@sukka/hexo-util-rs",
   "version": "0.10.0",
+  "version": "0.0.3",
   "description": "Template project for writing node package with napi-rs",
   "main": "index.js",
   "repository": "https://github.com/liby/hexo-util-rs.git",
