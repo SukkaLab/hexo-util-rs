@@ -109,34 +109,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@napi-rs/hexo-util@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "@napi-rs/hexo-util@workspace:."
-  dependencies:
-    "@napi-rs/cli": ^2.9.0
-    "@swc-node/register": ^1.5.1
-    "@types/hexo-util": ^0.6.4
-    "@types/node": ^18.0.3
-    "@typescript-eslint/eslint-plugin": ^5.27.1
-    "@typescript-eslint/parser": ^5.27.1
-    ava: ^4.3.0
-    benny: ^3.7.1
-    chalk: ^5.0.1
-    eslint: ^8.17.0
-    eslint-config-prettier: ^8.5.0
-    eslint-plugin-import: ^2.26.0
-    eslint-plugin-prettier: ^4.0.0
-    hexo-util: ^2.6.1
-    husky: ^8.0.1
-    lint-staged: ^13.0.1
-    npm-run-all: ^4.1.5
-    prettier: ^2.6.2
-    string-strip-html: 8
-    striptags: ^3.2.0
-    typescript: ^4.7.3
-  languageName: unknown
-  linkType: soft
-
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -183,6 +155,34 @@ __metadata:
   checksum: 1388777b507b0c592d53f41b9d182e1a8de7763bc625fc07999b8edbc22325f074e5b3ec90af79c89d6987fdb2325bc66d59f483258543c14a43661621f841b0
   languageName: node
   linkType: hard
+
+"@sukka/hexo-util-rs@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@sukka/hexo-util-rs@workspace:."
+  dependencies:
+    "@napi-rs/cli": ^2.9.0
+    "@swc-node/register": ^1.5.1
+    "@types/hexo-util": ^0.6.4
+    "@types/node": ^18.0.3
+    "@typescript-eslint/eslint-plugin": ^5.27.1
+    "@typescript-eslint/parser": ^5.27.1
+    ava: ^4.3.0
+    benny: ^3.7.1
+    chalk: ^5.0.1
+    eslint: ^8.17.0
+    eslint-config-prettier: ^8.5.0
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-prettier: ^4.0.0
+    hexo-util: ^2.6.1
+    husky: ^8.0.1
+    lint-staged: ^13.0.1
+    npm-run-all: ^4.1.5
+    prettier: ^2.6.2
+    string-strip-html: 8
+    striptags: ^3.2.0
+    typescript: ^4.7.3
+  languageName: unknown
+  linkType: soft
 
 "@swc-node/core@npm:^1.9.0":
   version: 1.9.0
