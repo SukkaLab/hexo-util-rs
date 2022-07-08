@@ -1,3 +1,3 @@
-# `@napi-rs/hexo-util-linux-x64-gnu`
+# `@sukka/hexo-util-rs-linux-x64-gnu`
 
-This is the **x86_64-unknown-linux-gnu** binary for `@napi-rs/hexo-util`
+This is the **x86_64-unknown-linux-gnu** binary for `@sukka/hexo-util-rs`
