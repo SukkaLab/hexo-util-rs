@@ -1,6 +1,6 @@
 {
   "name": "@sukka/hexo-util-rs",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "description": "Utilities for Hexo using rust rewrite.",
   "main": "index.js",
   "repository": "https://github.com/liby/hexo-util-rs.git",
@@ -19,6 +19,7 @@
   "files": [
     "index.d.ts",
     "index.js",
+    "utils.js",
     "common"
   ],
   "napi": {

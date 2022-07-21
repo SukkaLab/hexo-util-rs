@@ -1,6 +1,6 @@
 {
   "name": "@sukka/hexo-util-rs-linux-arm-gnueabihf",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "os": [
     "linux"
   ],
