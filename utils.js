@@ -1,17 +1,24 @@
-const Cache = require('./common/cache')
-const { isExternalLink: isExternalLinkRs, slugize, stripTags } = require('./utils')
+const { existsSync, readFileSync } = require('fs')
+const { join } = require('path')
 
-const externalLinkCache = new Cache()
+const { platform, arch } = process
 
-module.exports.isExternalLink = function isExternalLink(input, sitehost, exclude) {
-  // Fast path: return false early for internal link
-  // This does not involve costly operations like URL parsing or FFI interop.
-  if (!/^(\/\/|http(s)?:)/.test(input)) return false
+let nativeBinding = null
+let localFileExisted = false
+let loadError = null
 
-  return externalLinkCache.apply(`${input}-${sitehost}-${exclude}`, () => {
-    // Slow path: call Rust implementation for better URL parsing performance.
-    return isExternalLinkRs(input, sitehost, exclude)
-  })
+function isMusl() {
+  // For Node 10
+  if (!process.report || typeof process.report.getReport !== 'function') {
+    try {
+      return readFileSync('/usr/bin/ldd', 'utf8').includes('musl')
+    } catch (e) {
+      return true
+    }
+  } else {
+    const { glibcVersionRuntime } = process.report.getReport().header
+    return !glibcVersionRuntime
+  }
 }
 
 switch (platform) {
@@ -23,7 +30,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./hexo-util.android-arm64.node')
           } else {
-            nativeBinding = require('@sukka/hexo-util-rs-android-arm64')
+            nativeBinding = require('@napi-rs/hexo-util-android-arm64')
           }
         } catch (e) {
           loadError = e
@@ -35,7 +42,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./hexo-util.android-arm-eabi.node')
           } else {
-            nativeBinding = require('@sukka/hexo-util-rs-android-arm-eabi')
+            nativeBinding = require('@napi-rs/hexo-util-android-arm-eabi')
           }
         } catch (e) {
           loadError = e
@@ -53,7 +60,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./hexo-util.win32-x64-msvc.node')
           } else {
-            nativeBinding = require('@sukka/hexo-util-rs-win32-x64-msvc')
+            nativeBinding = require('@napi-rs/hexo-util-win32-x64-msvc')
           }
         } catch (e) {
           loadError = e
@@ -65,7 +72,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./hexo-util.win32-ia32-msvc.node')
           } else {
-            nativeBinding = require('@sukka/hexo-util-rs-win32-ia32-msvc')
+            nativeBinding = require('@napi-rs/hexo-util-win32-ia32-msvc')
           }
         } catch (e) {
           loadError = e
@@ -77,7 +84,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./hexo-util.win32-arm64-msvc.node')
           } else {
-            nativeBinding = require('@sukka/hexo-util-rs-win32-arm64-msvc')
+            nativeBinding = require('@napi-rs/hexo-util-win32-arm64-msvc')
           }
         } catch (e) {
           loadError = e
@@ -95,7 +102,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./hexo-util.darwin-x64.node')
           } else {
-            nativeBinding = require('@sukka/hexo-util-rs-darwin-x64')
+            nativeBinding = require('@napi-rs/hexo-util-darwin-x64')
           }
         } catch (e) {
           loadError = e
@@ -107,7 +114,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./hexo-util.darwin-arm64.node')
           } else {
-            nativeBinding = require('@sukka/hexo-util-rs-darwin-arm64')
+            nativeBinding = require('@napi-rs/hexo-util-darwin-arm64')
           }
         } catch (e) {
           loadError = e
@@ -126,7 +133,7 @@ switch (platform) {
       if (localFileExisted) {
         nativeBinding = require('./hexo-util.freebsd-x64.node')
       } else {
-        nativeBinding = require('@sukka/hexo-util-rs-freebsd-x64')
+        nativeBinding = require('@napi-rs/hexo-util-freebsd-x64')
       }
     } catch (e) {
       loadError = e
@@ -141,7 +148,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./hexo-util.linux-x64-musl.node')
             } else {
-              nativeBinding = require('@sukka/hexo-util-rs-linux-x64-musl')
+              nativeBinding = require('@napi-rs/hexo-util-linux-x64-musl')
             }
           } catch (e) {
             loadError = e
@@ -152,7 +159,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./hexo-util.linux-x64-gnu.node')
             } else {
-              nativeBinding = require('@sukka/hexo-util-rs-linux-x64-gnu')
+              nativeBinding = require('@napi-rs/hexo-util-linux-x64-gnu')
             }
           } catch (e) {
             loadError = e
@@ -166,7 +173,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./hexo-util.linux-arm64-musl.node')
             } else {
-              nativeBinding = require('@sukka/hexo-util-rs-linux-arm64-musl')
+              nativeBinding = require('@napi-rs/hexo-util-linux-arm64-musl')
             }
           } catch (e) {
             loadError = e
@@ -177,7 +184,7 @@ switch (platform) {
             if (localFileExisted) {
               nativeBinding = require('./hexo-util.linux-arm64-gnu.node')
             } else {
-              nativeBinding = require('@sukka/hexo-util-rs-linux-arm64-gnu')
+              nativeBinding = require('@napi-rs/hexo-util-linux-arm64-gnu')
             }
           } catch (e) {
             loadError = e
@@ -190,7 +197,7 @@ switch (platform) {
           if (localFileExisted) {
             nativeBinding = require('./hexo-util.linux-arm-gnueabihf.node')
           } else {
-            nativeBinding = require('@sukka/hexo-util-rs-linux-arm-gnueabihf')
+            nativeBinding = require('@napi-rs/hexo-util-linux-arm-gnueabihf')
           }
         } catch (e) {
           loadError = e
@@ -211,7 +218,8 @@ if (!nativeBinding) {
   throw new Error(`Failed to load native binding`)
 }
 
-const { slugize, stripTags } = nativeBinding
+const { isExternalLink, slugize, stripTags } = nativeBinding
 
+module.exports.isExternalLink = isExternalLink
 module.exports.slugize = slugize
 module.exports.stripTags = stripTags
