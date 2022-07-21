@@ -2,7 +2,7 @@
   "name": "@napi-rs/hexo-util",
   "version": "1.0.0",
   "name": "@sukka/hexo-util-rs",
-  "version": "0.0.5",
+  "version": "0.0.10",
   "description": "Utilities for Hexo using rust rewrite.",
   "name": "@sukka/hexo-util-rs",
   "version": "0.10.0",
