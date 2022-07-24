@@ -1,8 +1,6 @@
 {
-  "name": "@napi-rs/hexo-util",
-  "version": "1.0.0",
   "name": "@sukka/hexo-util-rs",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Utilities for Hexo using rust rewrite.",
   "name": "@sukka/hexo-util-rs",
   "version": "0.10.0",
@@ -27,7 +25,6 @@
     "index.js",
     "utils.js",
     "common/cache.js"
-    "common"
   ],
   "napi": {
     "name": "hexo-util",
